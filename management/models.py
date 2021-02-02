@@ -16,6 +16,9 @@ class Product(models.Model):
     tags = models.CharField(max_length=30)
     description = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.name 
+
 class Review(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)  
     user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -31,6 +34,9 @@ class Cart(models.Model):
     user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     quantity = models.CharField(max_length=30)
 
+    # def __str__(self):
+    #     return self.product_id.name 
+
 class Tags(models.Model):
     name = models.CharField(max_length=30)
      
@@ -43,7 +49,7 @@ class Address(models.Model):
     country = models.CharField(max_length=30)
     state = models.CharField(max_length=30)
     zip = models.CharField(max_length=30)
-
+    
 class Order(models.Model):
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)  
     user_id = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
